@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
     final wordPair = new WordPair.random();
     return new MaterialApp(
       title: 'Welcome to Flutter',
-      home:new RandomWords(),
+      home: new RandomWords(),
     );
   }
 }
@@ -52,7 +52,7 @@ class RandomWordsState extends State<RandomWords> {
         alreadySaved ? Icons.favorite : Icons.favorite_border,
         color: alreadySaved ? Colors.red : null,
       ),
-      onTap: (){
+      onTap: () {
         setState(() {
           if (alreadySaved) {
             _saved.remove(pair);
@@ -73,8 +73,35 @@ class RandomWordsState extends State<RandomWords> {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("startup Name Generor"),
+        actions: <Widget>[
+          new IconButton(icon: new Icon(Icons.list), onPressed: _pushSaved)
+        ],
       ),
       body: _buildSuggestions(),
     );
+  }
+
+  void _pushSaved() {
+    Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
+      final tiles = _saved.map((pair) {
+        return new ListTile(
+          title: new Text(
+            pair.asPascalCase,
+            style: _biggerFont,
+          ),
+        );
+      });
+      final divided =
+          ListTile.divideTiles(tiles: tiles, context: context).toList();
+
+      return new Scaffold(
+        appBar: new AppBar(
+          title: new Text("Saved Suggestionos"),
+        ),
+        body: new ListView(
+          children: divided,
+        ),
+      );
+    }));
   }
 }
