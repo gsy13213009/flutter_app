@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
+import 'package:flutter_app/animate/animate_demo.dart';
 
 void main() => runApp(new MyApp());
 
@@ -97,14 +98,15 @@ class RandomWordsState extends State<RandomWords> {
       final divided =
           ListTile.divideTiles(tiles: tiles, context: context).toList();
 
-      return new Scaffold(
-        appBar: new AppBar(
-          title: new Text("Saved Suggestionos"),
-        ),
-        body: new ListView(
-          children: divided,
-        ),
-      );
+//      return new Scaffold(
+//        appBar: new AppBar(
+//          title: new Text("Saved Suggestionos"),
+//        ),
+//        body: new ListView(
+//          children: divided,
+//        ),
+//
+    return new FadeAppTest();
     }));
   }
 }
