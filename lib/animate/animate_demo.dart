@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/launch.dart';
+import 'package:flutter_app/paint/SignaturePage.dart';
 
+/**
+ * fade in 动画的demo
+ */
 class FadeAppTest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -56,6 +61,7 @@ class _MyFadeTest extends State<MyFadeTest> with TickerProviderStateMixin {
       floatingActionButton: new FloatingActionButton(
         onPressed: () {
           controller.forward();
+//          Launch.launch(context, new SignaturePage());
         },
         child: new Icon(Icons.brush),
         tooltip: "Fade",
